@@ -41,8 +41,14 @@ Route::middleware('splade')->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::resource('users', \App\Http\Controllers\UserController::class);
+        Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
+        Route::resource('countries', \App\Http\Controllers\CountryController::class);
+        Route::resource('cities', \App\Http\Controllers\CityController::class);
+        Route::resource('states', \App\Http\Controllers\StateController::class);
+        Route::resource('departments', \App\Http\Controllers\DepartmentController::class);
 
     });
 
