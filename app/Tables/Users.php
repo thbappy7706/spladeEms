@@ -70,7 +70,7 @@ class Users extends AbstractTable
             ->column('id', sortable: true)
             ->column('username', sortable: true)
             ->column('first_name', sortable: true)
-            ->column('last_name', sortable: true)
+            ->column('last_name', sortable: true,hidden: true)
             ->column('email', sortable: true)
             ->column('created_at', sortable: true)
             ->column('action')
